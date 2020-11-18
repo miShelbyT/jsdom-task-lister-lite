@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.querySelector("#create-task-form")
 
+  // create variable for ul, which will eventually have li appended
+  const ul = document.querySelector("ul")
+
+  // create variable for #tasks so I can add event listener and delete uls
+  const tasks = document.querySelector("#tasks")
+
+  tasks.addEventListener("click", deleteToDo)
 
   form.addEventListener("submit", addToDo)
 
@@ -13,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault()
     const input = event.target["new-task-description"].value
 
-    // create variable for ul, create and append lis to ul
-    const ul = document.querySelector("ul")
+    // create and append li's to ul
+    
     const li = document.createElement("li")
     li.textContent = input
     ul.append(li)
@@ -22,6 +29,10 @@ document.addEventListener("DOMContentLoaded", () => {
     event.target.reset()
   }
 });
+
+function deleteToDo(event) {
+  event.target.remove()
+}
 
 
 /*
